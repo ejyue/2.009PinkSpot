@@ -45,12 +45,12 @@ class DMXConnection(object):
     Takes channel and value arguments to set a channel level in the local
     DMX frame, to be rendered the next time the render() method is called.
     '''
-    if not 1 <= chan-1 <= DMX_SIZE:
-      print 'Invalid channel specified: %s' % chan-1
+    if not 1 <= chan <= DMX_SIZE:
+      print 'Invalid channel specified: %s' % chan
       return
     # clamp value
     val = max(0, min(val, 255))
-    self.dmx_frame[chan-1] = val
+    self.dmx_frame[chan] = val
     if autorender: self.render()
 
   def clear(self, chan = 0):
